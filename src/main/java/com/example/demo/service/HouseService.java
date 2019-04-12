@@ -13,4 +13,6 @@ public interface HouseService {
     List<House> findAll();
 
     List<ResultHouse> findAllHouseInfo();
+
+    List<ResultHouse> findHouseByOwner(String houseOwner);
 }

@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class DealPK implements Serializable {
     private String dealHouse;
-    private String dealId;
+    //private String dealId;
     private String dealBuyer;
     private String dealAgency;
 
@@ -21,7 +21,7 @@ public class DealPK implements Serializable {
         this.dealHouse = dealHouse;
     }
 
-    @Column(name = "deal_id", nullable = false, length = 20)
+/*    @Column(name = "deal_id", nullable = false, length = 32)
     @Id
     public String getDealId() {
         return dealId;
@@ -29,7 +29,7 @@ public class DealPK implements Serializable {
 
     public void setDealId(String dealId) {
         this.dealId = dealId;
-    }
+    }*/
 
     @Column(name = "deal_buyer", nullable = false, length = 20)
     @Id
@@ -57,13 +57,13 @@ public class DealPK implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         DealPK dealPK = (DealPK) o;
         return Objects.equals(dealHouse, dealPK.dealHouse) &&
-                Objects.equals(dealId, dealPK.dealId) &&
+                //Objects.equals(dealId, dealPK.dealId) &&
                 Objects.equals(dealBuyer, dealPK.dealBuyer) &&
                 Objects.equals(dealAgency, dealPK.dealAgency);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dealHouse, dealId, dealBuyer, dealAgency);
-    }
+        return Objects.hash(dealHouse, dealBuyer, dealAgency);
+    }//, dealId
 }

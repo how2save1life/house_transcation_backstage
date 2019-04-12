@@ -67,8 +67,7 @@ public class OwnerServiceImpl implements OwnerService {
 
     @Override
     public Owner findOne(String ownerId) {
-
-        return null;
+        return ownerRepository.findOneByOwnerId(ownerId);
     }
 
     @Override

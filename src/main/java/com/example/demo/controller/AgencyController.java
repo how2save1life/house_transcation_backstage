@@ -19,6 +19,7 @@ public class AgencyController {
         System.out.println(agency.toString());
         return agencyService.saveOne(agency);
     }
+
     //注册
 /*    @GetMapping("/Register")
     public String saveOne(@RequestBody Agency agency) {
@@ -30,17 +31,30 @@ public class AgencyController {
     public String AgencyLogin(@RequestBody Agency agency) {
         return agencyService.login(agency);
     }
+
     //更新信息
     @PostMapping("/Update")
-    public String updateAgency(@RequestBody Agency agency){
-        return  agencyService.updateAgency(agency);
+    public String updateAgency(@RequestBody Agency agency) {
+        return agencyService.updateAgency(agency);
     }
-    //
+
+    //返回所有
     @GetMapping("/findAll")
-    public List<Agency> findAllAgency(){
+    public List<Agency> findAllAgency() {
         return agencyService.findAll();
     }
-    //
+
+    //返回随机一个
     @GetMapping("/findRandomOne")
-    public Agency findRandomAgency(){return agencyService.findRandomAgency();}
+    public Agency findRandomAgency() {
+        return agencyService.findRandomAgency();
+    }
+
+    //根据id返回
+    @GetMapping("/findMe/{AgencyId}")
+    public Agency findOne(@PathVariable("AgencyId") String AgencyId) {
+        return agencyService.findOne(AgencyId);
+    }
+
+    //@RequestMapping(value = "")
 }

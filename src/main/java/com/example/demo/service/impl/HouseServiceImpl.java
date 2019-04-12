@@ -66,10 +66,11 @@ public class HouseServiceImpl implements HouseService {
         String houseStatus = house.getHouseStatus();
         String houseType = house.getHouseType();
         String houseAgency = house.getHouseAgency();
+        String houseDescribe = house.getHouseDescribe();
         if (house.getHouseId() != null) {
             try {
                 System.out.println(houseId);
-                houseRepository.updateHouse(houseId, houseAddr, houseArea, houseLayout, houseName, housePrice, houseType, houseAgency, houseStatus);
+                houseRepository.updateHouse(houseId, houseAddr, houseArea, houseLayout, houseName, housePrice, houseType, houseAgency, houseStatus,houseDescribe);
                 flag = true;
             } catch (Exception e) {
                 System.out.println("update house failed" + e.getMessage());
@@ -95,6 +96,11 @@ public class HouseServiceImpl implements HouseService {
     @Override
     public List<ResultHouse> findAllHouseInfo() {
         List<ResultHouse> houses = houseRepository.findAllHouseInfo();
+        return houses;
+    }
+    @Override
+    public List<ResultHouse> findHouseByOwner(String houseOwner) {
+        List<ResultHouse> houses = houseRepository.findHouseByOwner(houseOwner);
         return houses;
     }
 }

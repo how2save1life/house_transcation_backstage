@@ -10,13 +10,23 @@ import java.util.Objects;
 @Entity
 @IdClass(DealPK.class)
 public class Deal {
+//    private String dealId;
     private String dealHouse;
-    private String dealId;
     private String dealBuyer;
     private String dealAgency;
     private BigInteger dealPrice;
     private String dealStatus;
     private Timestamp dealTime;
+
+/*
+    @Id
+    @Column(name = "deal_id", nullable = false, length = 32)
+    @GenericGenerator(name = "idGenerator", strategy = "uuid") //这个是hibernate的注解/生成32位UUID
+    @GeneratedValue(generator = "idGenerator")
+    public String getDealId() {
+        return dealId;
+    }
+*/
 
     @Id
     @Column(name = "deal_house", nullable = false, length = 32)
@@ -28,17 +38,10 @@ public class Deal {
         this.dealHouse = dealHouse;
     }
 
-    @Id
-    @GenericGenerator(name="idGenerator", strategy="uuid") //这个是hibernate的注解/生成32位UUID
-    @GeneratedValue(generator="idGenerator")
-    @Column(name = "deal_id", nullable = false, length = 20)
-    public String getDealId() {
-        return dealId;
-    }
 
-    public void setDealId(String dealId) {
+/*    public void setDealId(String dealId) {
         this.dealId = dealId;
-    }
+    }*/
 
     @Id
     @Column(name = "deal_buyer", nullable = false, length = 20)
@@ -61,7 +64,7 @@ public class Deal {
     }
 
     @Basic
-    @Column(name = "deal_price", nullable = true,length = 10,precision = 2)
+    @Column(name = "deal_price", nullable = true, length = 10, precision = 2)
     public BigInteger getDealPrice() {
         return dealPrice;
     }
@@ -96,7 +99,7 @@ public class Deal {
         if (o == null || getClass() != o.getClass()) return false;
         Deal deal = (Deal) o;
         return Objects.equals(dealHouse, deal.dealHouse) &&
-                Objects.equals(dealId, deal.dealId) &&
+/*                Objects.equals(dealId, deal.dealId) &&*/
                 Objects.equals(dealBuyer, deal.dealBuyer) &&
                 Objects.equals(dealAgency, deal.dealAgency) &&
                 Objects.equals(dealPrice, deal.dealPrice) &&
@@ -106,6 +109,6 @@ public class Deal {
 
     @Override
     public int hashCode() {
-        return Objects.hash(dealHouse, dealId, dealBuyer, dealAgency, dealPrice, dealStatus, dealTime);
-    }
+        return Objects.hash(dealHouse,  dealBuyer, dealAgency, dealPrice, dealStatus, dealTime);
+    } // dealId,
 }

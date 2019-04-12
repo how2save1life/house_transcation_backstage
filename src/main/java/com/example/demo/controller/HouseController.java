@@ -38,4 +38,9 @@ public class HouseController {
         return houseService.deleteOne(houseId);
     }
 
+    @GetMapping("/myHouse/{houseOwner}")
+    List<ResultHouse> getMyHouse(@PathVariable(value = "houseOwner")String houseOwner){
+        return houseService.findHouseByOwner(houseOwner);
+    }
+
 }

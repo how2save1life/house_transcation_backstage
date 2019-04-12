@@ -23,7 +23,8 @@ public interface HouseRepository extends JpaRepository<House, Integer> {
             "h.housePrice=:housePrice," +
             "h.houseType=:houseType," +
             "h.houseAgency=:houseAgency," +
-            "h.houseStatus=:houseStatus " +
+            "h.houseStatus=:houseStatus," +
+            "h.houseDescribe=:houseDescribe "+
             "where h.houseId=:houseId")
     int updateHouse(@Param("houseId") String houseId,
                     @Param("houseAddr") String houseAddr,
@@ -33,7 +34,8 @@ public interface HouseRepository extends JpaRepository<House, Integer> {
                     @Param("housePrice") BigDecimal housePrice,
                     @Param("houseType") String houseType,
                     @Param("houseAgency") String houseAgency,
-                    @Param("houseStatus") String houseStatus);
+                    @Param("houseStatus") String houseStatus,
+                    @Param("houseDescribe") String houseDescribe);
 
     House findByHouseNameAndHouseAddr(String houseName, String houseAddr);
 
@@ -41,17 +43,7 @@ public interface HouseRepository extends JpaRepository<House, Integer> {
 
     House findByHouseId(String houseId);
 
-    /**
-     * 查询collectBuyer 下收藏夹内所有的房屋信息
-     *
-     * @param collectBuyer
-     * @return
-     */
-    @Transactional
-    @Modifying
-    @Query(value = "select new com.example.demo.entity.ResultHouse(C.collectHouse,H.houseAddr,H.houseArea,H.houseLayout,H.houseName,H.housePrice,H.houseStatus,H.houseType,H.houseOwner,H.houseAgency,A.agencyName,A.agencyPhone) " +
-            "from Collect C,House H,Agency A where H.houseAgency = A.agencyId and C.collectHouse=H.houseId and C.collectBuyer=?1", nativeQuery = false)
-    List<ResultHouse> findAllByCollectBuyer(String collectBuyer);
+
 
     House findOneByHouseNameAndHouseAddr(String houseName, String houseAddr);
 
@@ -62,7 +54,13 @@ public interface HouseRepository extends JpaRepository<House, Integer> {
 //    @Query(value = "select * from house inner join agency on house.house_agency = agency.agency_id",nativeQuery = true)
 /*    @Query(value = "select new com.example.demo.entity.ResultHouse(H.houseId,H.houseAddr,H.houseArea,H.houseLayout,H.houseName,H.housePrice,H.houseStatus,H.houseType,H.houseOwner,H.houseAgency,A.agencyName,A.agencyPhone) " +
             "from House H inner join Agency A on H.houseAgency = A.agencyId",nativeQuery = false)*/
-    @Query(value = "select new com.example.demo.entity.ResultHouse(H.houseId,H.houseAddr,H.houseArea,H.houseLayout,H.houseName,H.housePrice,H.houseStatus,H.houseType,H.houseOwner,H.houseAgency,A.agencyName,A.agencyPhone) " +
+    @Query(value = "select new com.example.demo.entity.ResultHouse(H.houseId,H.houseAddr,H.houseArea,H.houseLayout,H.houseName,H.housePrice,H.houseStatus,H.houseType,H.houseOwner,H.houseAgency,H.houseDescribe,A.agencyName,A.agencyPhone) " +
             "from House H,Agency A where H.houseAgency = A.agencyId", nativeQuery = false)
     List<ResultHouse> findAllHouseInfo();
+
+    @Transactional
+    @Modifying
+    @Query(value = "select new com.example.demo.entity.ResultHouse(H.houseId,H.houseAddr,H.houseArea,H.houseLayout,H.houseName,H.housePrice,H.houseStatus,H.houseType,H.houseOwner,H.houseAgency,H.houseDescribe,A.agencyName,A.agencyPhone) " +
+            "from House H,Agency A where H.houseAgency = A.agencyId and H.houseOwner=?1", nativeQuery = false)
+    List<ResultHouse> findHouseByOwner(String houseOwner);
 }

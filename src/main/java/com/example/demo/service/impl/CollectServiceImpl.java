@@ -87,7 +87,7 @@ public class CollectServiceImpl implements CollectService {
         }*/
     @Override
     public List<ResultHouse> findAllByBuyer(String collectBuyer) {
-        List<ResultHouse> collect = houseRepository.findAllByCollectBuyer(collectBuyer);
+        List<ResultHouse> collect = collectRepository.findAllByCollectBuyer(collectBuyer);
         return collect;
     }
 }

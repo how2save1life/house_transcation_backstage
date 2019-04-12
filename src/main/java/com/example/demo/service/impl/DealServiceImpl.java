@@ -36,7 +36,7 @@ public class DealServiceImpl implements DealService {
     @Override
     public String saveOne(Deal deal) {
         boolean flag = false;
-        String dealId = deal.getDealId();
+        ///String dealId = deal.getDealId();
         String dealAgency = deal.getDealAgency();
         String dealBuyer = deal.getDealBuyer();
         String dealHouse = deal.getDealHouse();
@@ -47,11 +47,17 @@ public class DealServiceImpl implements DealService {
             // agencyId || buyerId || houseId 不存在
             return "info_needed";
 
-        } else if (getDeal != null && getDeal.getDealStatus()!=null) {
-            //如果保存过交易
+        } else if(!houseRepository.findByHouseId(dealHouse).getHouseStatus().equals("onsale")){
+            return "not_saleable";//房屋不在销售中
+        }
+        else if (getDeal != null && getDeal.getDealStatus().equals("done")) {
+            //如果保存过交易 且交易完成了
             return "deal_existed";
 
-        } else {
+        }else if(getDeal != null && getDeal.getDealStatus().equals("ing")) {
+            return "deal_ing";//看房中
+        }
+        else {
             //信息真实存在 且未保存过
             try {
                 dealRepository.save(deal);
@@ -60,8 +66,6 @@ public class DealServiceImpl implements DealService {
                 System.out.println("save deal failed" + e.getMessage());
             }
         }
-
-
         return flag == true ? "success" : "failed";
     }
 

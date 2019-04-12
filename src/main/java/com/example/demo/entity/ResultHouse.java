@@ -13,11 +13,15 @@ public class ResultHouse {
     private String houseType;
     private String houseOwner;
     private String houseAgency;
+    private String houseDescribe;
     private String agencyName;
     private String agencyPhone;
 
+
     public ResultHouse() {//构造函数
     }
+
+
     //构造函数
     public ResultHouse(String houseId,
                        String houseAddr,
@@ -29,8 +33,10 @@ public class ResultHouse {
                        String houseType,
                        String houseOwner,
                        String houseAgency,
+                       String houseDescribe,
                        String agencyName,
-                       String agencyPhone) {
+                       String agencyPhone
+                       ) {
         this.houseId = houseId;
         this.houseAddr = houseAddr;
         this.houseArea = houseArea;
@@ -43,6 +49,7 @@ public class ResultHouse {
         this.houseAgency = houseAgency;
         this.agencyName = agencyName;
         this.agencyPhone = agencyPhone;
+        this.houseDescribe = houseDescribe;
     }
 
     public String getHouseId() {
@@ -141,7 +148,11 @@ public class ResultHouse {
         this.agencyPhone = agencyPhone;
     }
 
+    public String getHouseDescribe() {
+        return houseDescribe;
+    }
 
-
-
+    public void setHouseDescribe(String houseDescribe) {
+        this.houseDescribe = houseDescribe;
+    }
 }
