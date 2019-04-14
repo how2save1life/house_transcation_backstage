@@ -21,7 +21,7 @@ public interface CollectRepository extends JpaRepository<Collect,Integer> {
      */
     @Transactional
     @Modifying
-    @Query(value = "select new com.example.demo.entity.ResultHouse(C.collectHouse,H.houseAddr,H.houseArea,H.houseLayout,H.houseName,H.housePrice,H.houseStatus,H.houseType,H.houseOwner,H.houseAgency,H.houseDescribe,A.agencyName,A.agencyPhone) " +
+    @Query(value = "select new com.example.demo.entity.ResultHouse(C.collectHouse,H.houseAddr,H.houseArea,H.houseLayout,H.houseName,H.housePrice,H.houseStatus,H.houseType,H.houseOwner,H.houseAgency,H.houseDescribe,H.housePic,A.agencyName,A.agencyPhone) " +
             "from Collect C,House H,Agency A where H.houseAgency = A.agencyId and C.collectHouse=H.houseId and C.collectBuyer=?1", nativeQuery = false)
     List<ResultHouse> findAllByCollectBuyer(String collectBuyer);
 

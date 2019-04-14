@@ -33,4 +33,10 @@ public interface BuyerRepository extends JpaRepository<Buyer, Integer> {
 
 
     Buyer findOneByBuyerSelfid(String buyerSelfid);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update Buyer b set b.buyerHead=:buyerHeadr where b.buyerId=:buyerId")
+    int updateBuyerHead(@Param("buyerId") String buyerId,@Param("buyerHead") String buyerHead);
+
 }

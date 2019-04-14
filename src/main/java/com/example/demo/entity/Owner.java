@@ -16,7 +16,7 @@ public class Owner {
     private String ownerPhone;
     private String ownerSelfid;
     private String ownerSex;
-    private String ownerType;
+    private String ownerHead;
 
     @Id
     @Column(name = "owner_id", nullable = false, length = 20)
@@ -99,13 +99,13 @@ public class Owner {
     }
 
     @Basic
-    @Column(name = "owner_type", nullable = false, length = 255)
-    public String getOwnerType() {
-        return ownerType;
+    @Column(name = "owner_head", nullable = false, length = 255)
+    public String getOwnerHead() {
+        return ownerHead;
     }
 
-    public void setOwnerType(String ownerType) {
-        this.ownerType = ownerType;
+    public void setOwnerHead(String ownerHead) {
+        this.ownerHead = ownerHead;
     }
 
     @Override
@@ -121,11 +121,11 @@ public class Owner {
                 Objects.equals(ownerPhone, owner.ownerPhone) &&
                 Objects.equals(ownerSelfid, owner.ownerSelfid) &&
                 Objects.equals(ownerSex, owner.ownerSex) &&
-                Objects.equals(ownerType, owner.ownerType);
+                Objects.equals(ownerHead, owner.ownerHead);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ownerId, ownerAddr, ownerAge, ownerName, ownerPasswd, ownerPhone, ownerSelfid, ownerSex, ownerType);
+        return Objects.hash(ownerId, ownerAddr, ownerAge, ownerName, ownerPasswd, ownerPhone, ownerSelfid, ownerSex, ownerHead);
     }
 }

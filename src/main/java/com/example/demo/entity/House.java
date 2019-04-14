@@ -19,14 +19,16 @@ public class House {
     private String houseAgency;
     private String houseStatus;
     private String houseDescribe;
+    private String housePic;
 
     @Id
     @Column(name = "house_id", nullable = false, length = 32)
-    @GenericGenerator(name="idGenerator", strategy="uuid") //这个是hibernate的注解/生成32位UUID
-    @GeneratedValue(generator="idGenerator")
+    @GenericGenerator(name = "idGenerator", strategy = "uuid") //这个是hibernate的注解/生成32位UUID
+    @GeneratedValue(generator = "idGenerator")
     public String getHouseId() {
         return houseId;
     }
+
     public void setHouseId(String houseId) {
         this.houseId = houseId;
     }
@@ -131,6 +133,16 @@ public class House {
         this.houseDescribe = houseDescribe;
     }
 
+    @Basic
+    @Column(name = "house_pic", nullable = true, length = 255)
+    public String getHousePic() {
+        return houseDescribe;
+    }
+
+    public void setHousePic(String housePic) {
+        this.housePic = housePic;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -146,11 +158,12 @@ public class House {
                 Objects.equals(houseOwner, house.houseOwner) &&
                 Objects.equals(houseAgency, house.houseAgency) &&
                 Objects.equals(houseStatus, house.houseStatus) &&
-                Objects.equals(houseDescribe, house.houseDescribe);
+                Objects.equals(houseDescribe, house.houseDescribe)&&
+                Objects.equals(housePic, house.housePic);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(houseId, houseName, houseType, houseLayout, houseAddr, houseArea, housePrice, houseOwner, houseAgency, houseStatus, houseDescribe);
+        return Objects.hash(houseId, houseName, houseType, houseLayout, houseAddr, houseArea, housePrice, houseOwner, houseAgency, houseStatus, houseDescribe,housePic);
     }
 }

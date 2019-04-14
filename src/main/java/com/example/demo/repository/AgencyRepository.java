@@ -16,6 +16,8 @@ public interface AgencyRepository extends JpaRepository<Agency, Integer> {
 
     Agency findOneByAgencyIdAndAgencyPasswd(String agencyId, String agencyPasswd);
 
+    Agency findOneByAgencySelfid(String agencySelfid);
+
     @Transactional
     @Modifying
     @Query(value = "update Agency a set " +
@@ -29,13 +31,18 @@ public interface AgencyRepository extends JpaRepository<Agency, Integer> {
             "a.agencyFee=:agencyFee " +
             "where a.agencyId=:agencyId")
     int updateAgency(@Param("agencyId") String agencyId,
-                        @Param("agencyName") String agencyName,
-                        @Param("agencySex") String agencySex,
-                        @Param("agencyAge") String agencyAge,
-                        @Param("agencySelfid") String agencySelfid,
-                        @Param("agencyPhone") String agencyPhone,
-                        @Param("agencyAddr") String agencyAddr,
-                        @Param("agencyFee") BigDecimal agencyFee);
+                     @Param("agencyName") String agencyName,
+                     @Param("agencySex") String agencySex,
+                     @Param("agencyAge") String agencyAge,
+                     @Param("agencySelfid") String agencySelfid,
+                     @Param("agencyPhone") String agencyPhone,
+                     @Param("agencyAddr") String agencyAddr,
+                     @Param("agencyFee") BigDecimal agencyFee);
 
-    Agency findOneByAgencySelfid(String agencySelfid);
+    @Transactional
+    @Modifying
+    @Query(value = "update Agency a set a.agencyHead=:agencyHead where a.agencyId=:agencyId")
+    int updateAgencyHead(@Param("agencyId") String agencyId, @Param("agencyHead") String agencyHead);
+
+
 }

@@ -16,6 +16,7 @@ public class Buyer {
     private String buyerPhone;
     private String buyerSelfid;
     private String buyerSex;
+    private String buyerHead;
 
     @Id
     @Column(name = "buyer_id", nullable = false, length = 20)
@@ -95,6 +96,16 @@ public class Buyer {
 
     public void setBuyerSex(String buyerSex) {
         this.buyerSex = buyerSex;
+    }
+
+    @Basic
+    @Column(name = "buyer_head", nullable = true, length = 255)
+    public String getBuyerHead() {
+        return buyerHead;
+    }
+
+    public void setBuyerHead(String buyerHead) {
+        this.buyerHead = buyerHead;
     }
 
     @Override

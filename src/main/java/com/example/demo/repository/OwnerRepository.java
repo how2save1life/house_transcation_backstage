@@ -21,8 +21,8 @@ public interface OwnerRepository extends JpaRepository<Owner, Integer> {
             "o.ownerAge=:ownerAge," +
             "o.ownerSelfid=:ownerSelfid," +
             "o.ownerPhone=:ownerPhone," +
-            "o.ownerAddr=:ownerAddr, " +
-            "o.ownerType=:ownerType " +
+            "o.ownerAddr=:ownerAddr " +
+
             "where o.ownerId=:ownerId")
     int updateOwner(@Param("ownerId") String ownerId,
                     @Param("ownerName") String ownerName,
@@ -30,8 +30,12 @@ public interface OwnerRepository extends JpaRepository<Owner, Integer> {
                     @Param("ownerAge") String ownerAge,
                     @Param("ownerSelfid") String ownerSelfid,
                     @Param("ownerPhone") String ownerPhone,
-                    @Param("ownerAddr") String ownerAddr,
-                    @Param("ownerType") String ownerType);
+                    @Param("ownerAddr") String ownerAddr);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update Owner o set o.ownerHead=:ownerHead where o.ownerId=:ownerId")
+    int updateOwnerHead(@Param("ownerId") String ownerId,@Param("ownerHead") String ownerHead);
 
     Owner findOneByOwnerIdAndOwnerPasswd(String ownerId, String ownerPasswd);
 

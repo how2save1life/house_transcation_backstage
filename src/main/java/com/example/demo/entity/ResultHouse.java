@@ -14,6 +14,7 @@ public class ResultHouse {
     private String houseOwner;
     private String houseAgency;
     private String houseDescribe;
+    private String housePic;
     private String agencyName;
     private String agencyPhone;
 
@@ -34,9 +35,10 @@ public class ResultHouse {
                        String houseOwner,
                        String houseAgency,
                        String houseDescribe,
+                       String housePic,
                        String agencyName,
                        String agencyPhone
-                       ) {
+    ) {
         this.houseId = houseId;
         this.houseAddr = houseAddr;
         this.houseArea = houseArea;
@@ -50,6 +52,7 @@ public class ResultHouse {
         this.agencyName = agencyName;
         this.agencyPhone = agencyPhone;
         this.houseDescribe = houseDescribe;
+        this.housePic = housePic;
     }
 
     public String getHouseId() {
@@ -148,11 +151,20 @@ public class ResultHouse {
         this.agencyPhone = agencyPhone;
     }
 
+
     public String getHouseDescribe() {
         return houseDescribe;
     }
 
     public void setHouseDescribe(String houseDescribe) {
         this.houseDescribe = houseDescribe;
+    }
+
+    public String getHousePic() {
+        return housePic;
+    }
+
+    public void setHousePic(String housePic) {
+        this.housePic = housePic;
     }
 }

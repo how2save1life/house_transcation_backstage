@@ -53,10 +53,10 @@ public class OwnerServiceImpl implements OwnerService {
         String ownerSex = owner.getOwnerSex();
         String ownerAge = owner.getOwnerAge();
         String ownerAddr = owner.getOwnerAddr();
-        String ownerType = owner.getOwnerType();
+       // String ownerType = owner.getOwnerType();
         try {
             ownerRepository.updateOwner(ownerId,ownerName, ownerSex, ownerAge, ownerSelfid,
-                    ownerPhone, ownerAddr,ownerType);
+                    ownerPhone, ownerAddr);//,ownerType
             flag = true;
         } catch (Exception e) {
             System.out.println("updateAgency failed" + e.getMessage());

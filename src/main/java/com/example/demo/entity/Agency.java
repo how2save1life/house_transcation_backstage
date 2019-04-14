@@ -18,6 +18,7 @@ public class Agency {
     private String agencyPhone;
     private String agencySelfid;
     private String agencySex;
+    private String agencyHead;
 
     @Id
     @Column(name = "agency_id", nullable = false, length = 20)
@@ -104,10 +105,19 @@ public class Agency {
     public String getAgencySex() {
         return agencySex;
     }
-
     public void setAgencySex(String agencySex) {
         this.agencySex = agencySex;
     }
+
+    @Basic
+    @Column(name = "agency_head", nullable = true, length = 255)
+    public String getAgencyHead() {
+        return agencyHead;
+    }
+    public void setAgencyHead(String agencyHead) {
+        this.agencyHead = agencyHead;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -122,11 +132,12 @@ public class Agency {
                 Objects.equals(agencyPasswd, agency.agencyPasswd) &&
                 Objects.equals(agencyPhone, agency.agencyPhone) &&
                 Objects.equals(agencySelfid, agency.agencySelfid) &&
-                Objects.equals(agencySex, agency.agencySex);
+                Objects.equals(agencySex, agency.agencySex)&&
+                Objects.equals(agencyHead, agency.agencyHead);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(agencyId, agencyAddr, agencyAge, agencyFee, agencyName, agencyPasswd, agencyPhone, agencySelfid, agencySex);
+        return Objects.hash(agencyId, agencyAddr, agencyAge, agencyFee, agencyName, agencyPasswd, agencyPhone, agencySelfid, agencySex,agencyHead);
     }
 }
