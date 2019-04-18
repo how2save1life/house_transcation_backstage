@@ -12,7 +12,7 @@ public class Agency {
     private String agencyId;
     private String agencyAddr;
     private String agencyAge;
-    private BigDecimal agencyFee;
+    //private BigDecimal agencyFee;
     private String agencyName;
     private String agencyPasswd;
     private String agencyPhone;
@@ -50,7 +50,7 @@ public class Agency {
         this.agencyAge = agencyAge;
     }
 
-    @Basic
+    /*@Basic
     @Column(name = "agency_fee", nullable = false,length=10, precision = 2)
     public BigDecimal getAgencyFee() {
         return agencyFee;
@@ -59,7 +59,7 @@ public class Agency {
     public void setAgencyFee(BigDecimal agencyFee) {
         this.agencyFee = agencyFee;
     }
-
+*/
     @Basic
     @Column(name = "agency_name", nullable = true, length = 20)
     public String getAgencyName() {
@@ -127,7 +127,7 @@ public class Agency {
         return Objects.equals(agencyId, agency.agencyId) &&
                 Objects.equals(agencyAddr, agency.agencyAddr) &&
                 Objects.equals(agencyAge, agency.agencyAge) &&
-                Objects.equals(agencyFee, agency.agencyFee) &&
+                //Objects.equals(agencyFee, agency.agencyFee) &&
                 Objects.equals(agencyName, agency.agencyName) &&
                 Objects.equals(agencyPasswd, agency.agencyPasswd) &&
                 Objects.equals(agencyPhone, agency.agencyPhone) &&
@@ -138,6 +138,6 @@ public class Agency {
 
     @Override
     public int hashCode() {
-        return Objects.hash(agencyId, agencyAddr, agencyAge, agencyFee, agencyName, agencyPasswd, agencyPhone, agencySelfid, agencySex,agencyHead);
+        return Objects.hash(agencyId, agencyAddr, agencyAge/*, agencyFee*/, agencyName, agencyPasswd, agencyPhone, agencySelfid, agencySex,agencyHead);
     }
 }

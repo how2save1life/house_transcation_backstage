@@ -72,4 +72,17 @@ public interface HouseRepository extends JpaRepository<House, Integer> {
     int updateHousePic(@Param("houseId") String houseId,
                     @Param("housePic") String housePic);
 
+    @Transactional
+    @Modifying
+    @Query(value = "update House h set h.houseStatus=?2 where h.houseId=?1")
+    int updateHouseStatus(String dealHouse, String houseStatus);
+
+    int countByHouseStatus(String sold);
+
+    int countByHouseLayout(String layout);
+
+ /*   @Transactional
+    @Modifying
+    @Query(value = "select count(h) from House h where h.houseStatus=?1")
+    int countByHouseStatus(String houseStatus);*/
 }

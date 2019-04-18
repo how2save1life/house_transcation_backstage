@@ -36,7 +36,7 @@ public interface BuyerRepository extends JpaRepository<Buyer, Integer> {
 
     @Transactional
     @Modifying
-    @Query(value = "update Buyer b set b.buyerHead=:buyerHeadr where b.buyerId=:buyerId")
+    @Query(value = "update Buyer b set b.buyerHead=:buyerHead where b.buyerId=:buyerId")
     int updateBuyerHead(@Param("buyerId") String buyerId,@Param("buyerHead") String buyerHead);
 
 }

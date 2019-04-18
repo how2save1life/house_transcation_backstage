@@ -12,13 +12,13 @@ public class PicController {
     PicService picService;
 
     @PostMapping(value = "/Agency/myHead/{id}")
-    public String uploadAgencyHead(@RequestParam("file") MultipartFile file, @PathVariable("id") String ownerId) throws Exception {
-        return picService.saveHead(file, "Agency", ownerId);
+    public String uploadAgencyHead(@RequestParam("file") MultipartFile file, @PathVariable("id") String agencyId) throws Exception {
+        return picService.saveHead(file, "Agency", agencyId);
     }
 
     @PostMapping(value = "/Buyer/myHead/{id}")
-    public String uploadBuyerHead(@RequestParam("file") MultipartFile file, @PathVariable("id") String ownerId) throws Exception {
-        return picService.saveHead(file, "Buyer", ownerId);
+    public String uploadBuyerHead(@RequestParam("file") MultipartFile file, @PathVariable("id") String buyerId) throws Exception {
+        return picService.saveHead(file, "Buyer", buyerId);
     }
 
     @PostMapping(value = "/Owner/myHead/{id}")

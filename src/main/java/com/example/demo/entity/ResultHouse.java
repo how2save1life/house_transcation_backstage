@@ -19,6 +19,7 @@ public class ResultHouse {
     private String agencyPhone;
 
 
+
     public ResultHouse() {//构造函数
     }
 

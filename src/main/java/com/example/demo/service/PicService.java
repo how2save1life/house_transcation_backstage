@@ -7,4 +7,5 @@ public interface PicService {
     String saveHead(MultipartFile file, String userType,String userId);
 
     String saveHousePic(MultipartFile file, String houseId);
+
 }

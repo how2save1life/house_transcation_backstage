@@ -120,11 +120,12 @@ public class Buyer {
                 Objects.equals(buyerPasswd, buyer.buyerPasswd) &&
                 Objects.equals(buyerPhone, buyer.buyerPhone) &&
                 Objects.equals(buyerSelfid, buyer.buyerSelfid) &&
-                Objects.equals(buyerSex, buyer.buyerSex);
+                Objects.equals(buyerSex, buyer.buyerSex)&&
+        Objects.equals(buyerHead, buyer.buyerHead);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(buyerId, buyerAddr, buyerAge, buyerName, buyerPasswd, buyerPhone, buyerSelfid, buyerSex);
+        return Objects.hash(buyerId, buyerAddr, buyerAge, buyerName, buyerPasswd, buyerPhone, buyerSelfid, buyerSex,buyerHead);
     }
 }

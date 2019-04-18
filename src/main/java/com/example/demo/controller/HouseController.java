@@ -43,4 +43,14 @@ public class HouseController {
         return houseService.findHouseByOwner(houseOwner);
     }
 
+    @GetMapping("/houseData")
+    String getHouseData(){
+        return houseService.getHouseData();
+    }
+
+    @GetMapping("/houseLayoutData")
+    String getHouseLayouData(){
+        return houseService.getHouseLayoutData();
+    }
+
 }

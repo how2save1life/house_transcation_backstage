@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class DealPK implements Serializable {
     private String dealHouse;
-    //private String dealId;
+    private String dealOwner;
     private String dealBuyer;
     private String dealAgency;
 
@@ -21,15 +21,15 @@ public class DealPK implements Serializable {
         this.dealHouse = dealHouse;
     }
 
-/*    @Column(name = "deal_id", nullable = false, length = 32)
+    @Column(name = "deal_owner", nullable = false, length = 20)
     @Id
-    public String getDealId() {
-        return dealId;
+    public String getDealOwner() {
+        return dealOwner;
     }
 
-    public void setDealId(String dealId) {
-        this.dealId = dealId;
-    }*/
+    public void setDealOwner(String dealOwner) {
+        this.dealOwner = dealOwner;
+    }
 
     @Column(name = "deal_buyer", nullable = false, length = 20)
     @Id

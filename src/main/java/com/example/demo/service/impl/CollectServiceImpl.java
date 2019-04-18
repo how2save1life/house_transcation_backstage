@@ -35,11 +35,15 @@ public class CollectServiceImpl implements CollectService {
         String collectBuyer = collect.getCollectBuyer();
         if (houseRepository.findByHouseId(collectHouse) == null || buyerRepository.findOneByBuyerId(collectBuyer) == null) {
             //传入的houseId或buyerId不存在
+           /* System.out.println(houseRepository.findByHouseId(collectHouse));
+            System.out.println(collectBuyer);
+            System.out.println( buyerRepository.findOneByBuyerId(collectBuyer));*/
             return "info_needed";
         } else if (collectRepository.findByCollectHouseAndCollectBuyer(collectHouse, collectBuyer) != null) {
             //收藏已存在
             return "collect_existed";
-        } else {
+        }
+        else {
             //保存
             try {
                 collectRepository.save(collect);
@@ -87,7 +91,6 @@ public class CollectServiceImpl implements CollectService {
         }*/
     @Override
     public List<ResultHouse> findAllByBuyer(String collectBuyer) {
-        List<ResultHouse> collect = collectRepository.findAllByCollectBuyer(collectBuyer);
-        return collect;
+        return collectRepository.findAllByCollectBuyer(collectBuyer);
     }
 }

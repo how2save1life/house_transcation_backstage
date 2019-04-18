@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -10,24 +11,27 @@ import java.util.Objects;
 @Entity
 @IdClass(DealPK.class)
 public class Deal {
-//    private String dealId;
+    private String dealId;
+    private String dealOwner;
     private String dealHouse;
     private String dealBuyer;
     private String dealAgency;
-    private BigInteger dealPrice;
+    private BigDecimal dealPrice;
     private String dealStatus;
-    private Timestamp dealTime;
+    private String dealTime;
 
-/*
+
+
     @Id
-    @Column(name = "deal_id", nullable = false, length = 32)
-    @GenericGenerator(name = "idGenerator", strategy = "uuid") //这个是hibernate的注解/生成32位UUID
-    @GeneratedValue(generator = "idGenerator")
-    public String getDealId() {
-        return dealId;
-    }
-*/
+    @Column(name = "deal_owner", nullable = false, length = 20)
 
+    public String getDealOwner() {
+        return dealOwner;
+    }
+
+    public void setDealOwner(String dealOwner) {
+        this.dealOwner = dealOwner;
+    }
     @Id
     @Column(name = "deal_house", nullable = false, length = 32)
     public String getDealHouse() {
@@ -38,10 +42,6 @@ public class Deal {
         this.dealHouse = dealHouse;
     }
 
-
-/*    public void setDealId(String dealId) {
-        this.dealId = dealId;
-    }*/
 
     @Id
     @Column(name = "deal_buyer", nullable = false, length = 20)
@@ -64,12 +64,21 @@ public class Deal {
     }
 
     @Basic
+    @Column(name = "deal_id", nullable = true, length = 32)
+    public String getDealId() {
+        return dealId;
+    }
+
+    public void setDealId(String dealId) {
+        this.dealId = dealId;
+    }
+    @Basic
     @Column(name = "deal_price", nullable = true, length = 10, precision = 2)
-    public BigInteger getDealPrice() {
+    public BigDecimal getDealPrice() {
         return dealPrice;
     }
 
-    public void setDealPrice(BigInteger dealPrice) {
+    public void setDealPrice(BigDecimal dealPrice) {
         this.dealPrice = dealPrice;
     }
 
@@ -85,11 +94,11 @@ public class Deal {
 
     @Basic
     @Column(name = "deal_time", nullable = true)
-    public Timestamp getDealTime() {
+    public String getDealTime() {
         return dealTime;
     }
 
-    public void setDealTime(Timestamp dealTime) {
+    public void setDealTime(String dealTime) {
         this.dealTime = dealTime;
     }
 
@@ -99,7 +108,7 @@ public class Deal {
         if (o == null || getClass() != o.getClass()) return false;
         Deal deal = (Deal) o;
         return Objects.equals(dealHouse, deal.dealHouse) &&
-/*                Objects.equals(dealId, deal.dealId) &&*/
+                Objects.equals(dealOwner, deal.dealOwner) &&
                 Objects.equals(dealBuyer, deal.dealBuyer) &&
                 Objects.equals(dealAgency, deal.dealAgency) &&
                 Objects.equals(dealPrice, deal.dealPrice) &&
@@ -109,6 +118,6 @@ public class Deal {
 
     @Override
     public int hashCode() {
-        return Objects.hash(dealHouse,  dealBuyer, dealAgency, dealPrice, dealStatus, dealTime);
+        return Objects.hash(dealOwner,dealHouse,  dealBuyer, dealAgency, dealPrice, dealStatus, dealTime);
     } // dealId,
 }

@@ -27,17 +27,17 @@ public interface AgencyRepository extends JpaRepository<Agency, Integer> {
             "a.agencyAge=:agencyAge," +
             "a.agencySelfid=:agencySelfid," +
             "a.agencyPhone=:agencyPhone," +
-            "a.agencyAddr=:agencyAddr," +
-            "a.agencyFee=:agencyFee " +
-            "where a.agencyId=:agencyId")
+            "a.agencyAddr=:agencyAddr " +
+            "where a.agencyId=:agencyId")/*," +
+            "a.agencyFee=:agencyFee*/
     int updateAgency(@Param("agencyId") String agencyId,
                      @Param("agencyName") String agencyName,
                      @Param("agencySex") String agencySex,
                      @Param("agencyAge") String agencyAge,
                      @Param("agencySelfid") String agencySelfid,
                      @Param("agencyPhone") String agencyPhone,
-                     @Param("agencyAddr") String agencyAddr,
-                     @Param("agencyFee") BigDecimal agencyFee);
+                     @Param("agencyAddr") String agencyAddr/*,
+                     @Param("agencyFee") BigDecimal agencyFee*/);
 
     @Transactional
     @Modifying

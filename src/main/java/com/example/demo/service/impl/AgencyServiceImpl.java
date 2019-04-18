@@ -61,10 +61,10 @@ public class AgencyServiceImpl implements AgencyService {
         String agencySex = agency.getAgencySex();
         String agencyAge = agency.getAgencyAge();
         String agencyAddr = agency.getAgencyAddr();
-        BigDecimal agencyFee = agency.getAgencyFee();
+        //BigDecimal agencyFee = agency.getAgencyFee();
         try {
             agencyRepository.updateAgency(agencyId,agencyName, agencySex, agencyAge, agencySelfid,
-                    agencyPhone, agencyAddr, agencyFee);
+                    agencyPhone, agencyAddr/*, agencyFee*/);
 
             flag = true;
         } catch (Exception e) {

@@ -67,7 +67,7 @@ public class BuyerServiceImpl implements BuyerService {
 
     @Override
     public Buyer findOne(String buyerId) {
-        return null;
+        return buyerRepository.findOneByBuyerId(buyerId);
     }
 
     @Override
